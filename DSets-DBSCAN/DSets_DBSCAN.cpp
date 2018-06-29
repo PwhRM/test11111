@@ -27,8 +27,16 @@
 using namespace std;
 using namespace arma;
 
-mat DSets_DBSCAN(){
+mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold, double precision, int maxIters){
     mat clust;
+    //generate similarity matrix
+    double sigma = 10 * mean(mean(dist_mat));
+    mat A = exp(- dist_mat / sigma);
+    //perform histogram equalization on similarity matrix
+    
+    
+    
+    
     
     return clust;
 }

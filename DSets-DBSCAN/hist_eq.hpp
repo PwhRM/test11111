@@ -1,19 +1,20 @@
 //
-//  DSets_DBSCAN.hpp
+//  hist_eq.hpp
 //  DSets-DBSCAN
 //
 //  Created by Rui Ma on 29.06.18.
 //  Copyright © 2018 Rui Ma. All rights reserved.
 //
 
-#ifndef DSets_DBSCAN_hpp
-#define DSets_DBSCAN_hpp
+#ifndef hist_eq_hpp
+#define hist_eq_hpp
 
 #include <stdio.h>
 #include <iostream>
 #include <armadillo>
 
+using namespace std;
 using namespace arma;
 
-mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold, double precision, int maxIters);
-#endif /* DSets_DBSCAN_hpp */
+mat hist_eq(mat img, int hist_size);
+#endif /* hist_eq_hpp */
