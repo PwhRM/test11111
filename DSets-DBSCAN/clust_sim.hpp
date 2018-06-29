@@ -10,5 +10,11 @@
 #define clust_sim_hpp
 
 #include <stdio.h>
+#include "clust_sim.hpp"
+#include <iostream>
+#include <math.h>
+#include <armadillo>
+
+mat clust_sim(int n_clust, int n_point, int n_noise, double r, double height, double width);
 
 #endif /* clust_sim_hpp */

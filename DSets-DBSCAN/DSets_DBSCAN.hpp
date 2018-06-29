@@ -10,5 +10,5 @@
 #define DSets_DBSCAN_hpp
 
 #include <stdio.h>
-
+mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold, double precision, int maxIters);
 #endif /* DSets_DBSCAN_hpp */

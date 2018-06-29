@@ -11,6 +11,7 @@
 //1) int n_clust: number of clusters
 //2) int n_point: number of points in each cluster
 //3) int n_noise: number of noise
+//4) double r: radius of cluster
 //4) double height: number of rows of the image matrix
 //5) double width: number of column of the image matrix
 //output:
@@ -29,13 +30,22 @@
 using namespace std;
 using namespace arma;
 
-mat clust_sim(int n_clust, int n_point, int n_noise, double height, double width){
+mat clust_sim(int n_clust, int n_point, int n_noise, double r, double height, double width){
     //declare output
     mat clust_data(n_point * n_clust + n_noise, 2);
     //generate clusters
     for (int i = 0; i < n_clust; i++){
-        
+		clust_data(span(i * n_point, (i + 1) * n_point), span(0, 1)) 
+			= sim_spherical_clust(n_point, r);
+		clust_data(span(i * n_point, (i + 1) * n_point), span(2, 2))
+			= i;
     }
+	for (int i = n_point * n_clust; i < n_point * n_clust + n_noise; i++) {
+		clust_data(i, 0) = height * randu();
+		clust_data(i, 1) = width * randu();
+		clust_data(i, 1)
+			= 0;
+	}
     return clust_data;
 }
 
