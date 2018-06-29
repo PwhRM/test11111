@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B536F45B20E651DF00FC0185 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F45A20E651DF00FC0185 /* main.cpp */; };
+		B536F46320E6545500FC0185 /* DSets_DBSCAN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F46120E6545500FC0185 /* DSets_DBSCAN.cpp */; };
+		B536F46620E6569300FC0185 /* clust_sim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F46420E6569300FC0185 /* clust_sim.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		B536F45720E651DF00FC0185 /* DSets-DBSCAN */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "DSets-DBSCAN"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B536F45A20E651DF00FC0185 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B536F46120E6545500FC0185 /* DSets_DBSCAN.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSets_DBSCAN.cpp; sourceTree = "<group>"; };
+		B536F46220E6545500FC0185 /* DSets_DBSCAN.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DSets_DBSCAN.hpp; sourceTree = "<group>"; };
+		B536F46420E6569300FC0185 /* clust_sim.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clust_sim.cpp; sourceTree = "<group>"; };
+		B536F46520E6569300FC0185 /* clust_sim.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = clust_sim.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				B536F45A20E651DF00FC0185 /* main.cpp */,
+				B536F46120E6545500FC0185 /* DSets_DBSCAN.cpp */,
+				B536F46220E6545500FC0185 /* DSets_DBSCAN.hpp */,
+				B536F46420E6569300FC0185 /* clust_sim.cpp */,
+				B536F46520E6569300FC0185 /* clust_sim.hpp */,
 			);
 			path = "DSets-DBSCAN";
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B536F46620E6569300FC0185 /* clust_sim.cpp in Sources */,
+				B536F46320E6545500FC0185 /* DSets_DBSCAN.cpp in Sources */,
 				B536F45B20E651DF00FC0185 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +250,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/armadillo/8.600.0/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/armadillo/8.600.0/lib;
+				OTHER_LDFLAGS = "-larmadillo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -246,6 +261,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/armadillo/8.600.0/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/armadillo/8.600.0/lib;
+				OTHER_LDFLAGS = "-larmadillo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -1,15 +1,16 @@
-//
-//  main.cpp
-//  DSets-DBSCAN
-//
-//  Created by Rui Ma on 29.06.18.
-//  Copyright © 2018 Rui Ma. All rights reserved.
-//
-
 #include <iostream>
+#include <armadillo>
+#include "DSets_DBSCAN.hpp"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+using namespace std;
+using namespace arma;
+
+int main(int argc, const char **argv) {
+    //generate random cluster data
+    
+    //distance matrix of cluster data
+    
+    //perform DSets-DBSCAN clustering method
+    
+return 0;
 }
