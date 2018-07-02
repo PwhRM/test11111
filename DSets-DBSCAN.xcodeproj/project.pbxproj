@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50021C020EA6434001784C2 /* inImDynM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B50021BE20EA6434001784C2 /* inImDynM.cpp */; };
 		B536F45B20E651DF00FC0185 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F45A20E651DF00FC0185 /* main.cpp */; };
 		B536F46320E6545500FC0185 /* DSets_DBSCAN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F46120E6545500FC0185 /* DSets_DBSCAN.cpp */; };
 		B536F46620E6569300FC0185 /* clust_sim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F46420E6569300FC0185 /* clust_sim.cpp */; };
@@ -26,6 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B50021BE20EA6434001784C2 /* inImDynM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = inImDynM.cpp; sourceTree = "<group>"; };
+		B50021BF20EA6434001784C2 /* inImDynM.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = inImDynM.hpp; sourceTree = "<group>"; };
 		B536F45720E651DF00FC0185 /* DSets-DBSCAN */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "DSets-DBSCAN"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B536F45A20E651DF00FC0185 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B536F46120E6545500FC0185 /* DSets_DBSCAN.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSets_DBSCAN.cpp; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 				B536F46520E6569300FC0185 /* clust_sim.hpp */,
 				B536F46720E6C9AC00FC0185 /* hist_eq.cpp */,
 				B536F46820E6C9AC00FC0185 /* hist_eq.hpp */,
+				B50021BE20EA6434001784C2 /* inImDynM.cpp */,
+				B50021BF20EA6434001784C2 /* inImDynM.hpp */,
 			);
 			path = "DSets-DBSCAN";
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50021C020EA6434001784C2 /* inImDynM.cpp in Sources */,
 				B536F46620E6569300FC0185 /* clust_sim.cpp in Sources */,
 				B536F46920E6C9AC00FC0185 /* hist_eq.cpp in Sources */,
 				B536F46320E6545500FC0185 /* DSets_DBSCAN.cpp in Sources */,
