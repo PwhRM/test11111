@@ -12,8 +12,10 @@
 #include <stdio.h>
 #include <iostream>
 #include <armadillo>
+#include "hist_eq.hpp"
+#include "inImDynM.hpp"
 
 using namespace arma;
 
-mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold, double precision, int maxIters);
+mat DSets_DBSCAN(mat dist_mat, vec x0, double supportThreshold, double precision, int maxIters, int minPts);
 #endif /* DSets_DBSCAN_hpp */

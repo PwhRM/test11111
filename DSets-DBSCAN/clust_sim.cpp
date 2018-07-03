@@ -30,6 +30,8 @@
 using namespace std;
 using namespace arma;
 
+mat sim_spherical_clust(int n_point, double r);
+
 mat clust_sim(int n_clust, int n_point, int n_noise, double r, double height, double width){
     //declare output
     mat clust_data(n_point * n_clust + n_noise, 2);
@@ -43,8 +45,7 @@ mat clust_sim(int n_clust, int n_point, int n_noise, double r, double height, do
 	for (int i = n_point * n_clust; i < n_point * n_clust + n_noise; i++) {
 		clust_data(i, 0) = height * randu();
 		clust_data(i, 1) = width * randu();
-		clust_data(i, 1)
-			= 0;
+		clust_data(i, 2) = 0;
 	}
     return clust_data;
 }

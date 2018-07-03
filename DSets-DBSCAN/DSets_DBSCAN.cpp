@@ -24,12 +24,15 @@
 #include <iostream>
 #include <armadillo>
 #include "hist_eq.hpp"
+#include "inImDynM.hpp"
 
 using namespace std;
 using namespace arma;
 
-mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold, double precision, int maxIters){
-    mat clust;
+vec ExpandCluster(mat dist_mat, uword pt, int cid, double Eps, int minPts, vec clust, vec d);
+
+mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold = 1e-4, double precision = 1e-8, int maxIters = 1000, int minPts = 4){
+    //control of input arguments be done in main function
     //generate similarity matrix
     double sigma = 10 * mean(mean(dist_mat));
     mat A = exp(- dist_mat / sigma);
@@ -38,8 +41,69 @@ mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold, double precision
     //perform histogram equalization on similarity matrix
     int nbins = 50;
     A = hist_eq(A, nbins);
-    
-    
+    //number of points in the data set
+    int n_points = int(A.n_rows);
+    //index of points
+    //d will be changing over the while loop
+    vec d(A.n_rows);
+    for (int i = 0; i < n_points; i++) {
+        d(i) = i + 1;
+    }
+    //initial cluster id
+    int cid = 1;
+    //cluster results
+    vec clust = zeros(n_points);
+    //starting clustering
+    //the visited data points will be assigned with 0 in the d vec after the while loop
+    //first initialize count as n_points
+    int count = n_points;
+    while (any(d) && count > 0) {
+        //frist remove visited data points
+        vec d_tmp = d(find(d > 0));
+        int n_points_tmp = int(d_tmp.n_elem);
+        mat A_tmp(n_points_tmp, n_points_tmp), dist_mat_tmp(n_points_tmp, n_points_tmp);
+        for (int i = 0; i < n_points_tmp; i++) {
+            for (int j = 0; j < n_points_tmp; j++) {
+                A_tmp(i, j) = A(d_tmp(i) - 1, d_tmp(j) - 1);
+                dist_mat_tmp(i, j) = dist_mat(d_tmp(i) - 1, d_tmp(j) - 1);
+            }
+        }
+        //get current x from current d
+        //the size of d is changing, so size of x is changing too
+        mat x(d_tmp.n_elem, 1);
+        for (int i = 0; i < int(d_tmp.n_rows); i++) {
+            x(i, 0) = x0(d_tmp(i), 0);
+        }
+        x = x / sum(x, 0);
+        //extract dominant from DSets method
+        x = inImDynM(A_tmp, x, precision, maxIters);
+        //note id_A will be vec instead of matrix
+        uvec xid = find(x > supportThreshold);
+        vec id_A = x.elem(xid);
+        //assign clust id
+        vec id_clust = d_tmp.elem(xid);
+        for (int i = 0; i < int(id_clust.n_elem); i++) {
+            clust(id_clust(i) - 1) = cid;
+        }
+        //use DBSCAN to expand dominant
+        double Eps = 0;
+        for (int i = 0; i < int(id_A.n_elem); i++) {
+            vec d_tmp = dist_mat_tmp.col(id_A(i));
+            d_tmp = sort(d_tmp);
+            Eps = max(Eps, d_tmp(min(minPts + 1, int(d_tmp.n_elem))));
+        }
+        uvec visit_list = xid;
+        for (int i = 0; i < int(xid.n_elem); i++) {
+            uword pt = visit_list(i);
+            clust = ExpandCluster(dist_mat_tmp, pt, cid, Eps, minPts, clust, d_tmp);
+        }
+        //get new xid
+        vec d_clust = d(find(clust == cid));
+        //assigan visited data points in d as 0
+        for (int i = 0; i < d_clust.n_elem; i++) {
+            d(d_clust(i) - 1) = 0;
+        }
+    }
     
     
     

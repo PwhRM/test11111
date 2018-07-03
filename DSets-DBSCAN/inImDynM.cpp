@@ -38,23 +38,23 @@ mat inImDynM(mat A, mat x, double toll, int maxIters){
         NashError = norm(min(x, r), 2);
         
         int i = selectPureStrategy(x, r);
-        double den = A(i, i) - g(i, 1) - r(i, 1);
+        double den = A(i, i) - g(i, 0) - r(i, 0);
         bool do_remove = false;
         double mu;
         double optDelta;
-        if (r(i, 1) >= 0) {
+        if (r(i, 0) >= 0) {
             mu = 1;
             if (den < 0) {
-                optDelta = - r(i, 1) / den;
+                optDelta = - r(i, 0) / den;
                 if (optDelta < mu) {
                     mu = optDelta;
                 }
             }
         } else {
             do_remove = true;
-            mu = x(i, 1) / (x(i, 1) - 1);
+            mu = x(i, 0) / (x(i, 0) - 1);
             if (den < 0) {
-                optDelta = - r(i, 1) / den;
+                optDelta = - r(i, 0) / den;
                 if (optDelta >= mu) {
                     mu = optDelta;
                     do_remove = false;
@@ -62,12 +62,12 @@ mat inImDynM(mat A, mat x, double toll, int maxIters){
             }
         }
         mat tmp = - x;
-        tmp(i, 1) = tmp(i, 1) + 1;
+        tmp(i, 0) = tmp(i, 0) + 1;
         x = x + mu * tmp;
         if (do_remove) {
-            x(i, 1) = 0;
+            x(i, 0) = 0;
         }
-        x = abs(x) / sum(abs(x), 1);
+        x = abs(x) / sum(abs(x), 0);
         g = mu * (A.col(i) - g) + g;
         iters = iters + 1;
     }
@@ -78,11 +78,11 @@ int selectPureStrategy(mat x, mat r){
     double maxVal = 0, minVal = 0;
     int i, maxIdx = -1, minIdx = -1;
     for (int j = 0; j < x.n_rows; j++) {
-        if (maxVal < r(j, 1)) {
-            maxVal = r(j, 1);
+        if (maxVal < r(j, 0)) {
+            maxVal = r(j, 0);
             maxIdx = j;
-        } else if (minVal > r(j, 1) && x(j, 1) > 0) {
-            minVal = r(j, 1);
+        } else if (minVal > r(j, 0) && x(j, 0) > 0) {
+            minVal = r(j, 0);
             minIdx = j;
         }
     }

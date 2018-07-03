@@ -33,7 +33,7 @@ mat hist_eq(mat img, int hist_size){
     //apply transformation
     for (int i = 0; i < int(img.n_rows); i++){
         for(int j = 0; j < int(img.n_cols); j++){
-            new_img(i, j) = cdf(img(i, j), 1) / (hist_size - 1);
+            new_img(i, j) = cdf(img(i, j), 0) / (hist_size - 1);
         }
     }
     
