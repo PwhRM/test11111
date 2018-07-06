@@ -25,6 +25,7 @@
 #include <armadillo>
 #include "hist_eq.hpp"
 #include "inImDynM.hpp"
+#include "ExpandCluster.hpp"
 
 using namespace std;
 using namespace arma;
@@ -104,8 +105,6 @@ mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold = 1e-4, double pr
             d(d_clust(i) - 1) = 0;
         }
     }
-    
-    
     
     return clust;
 }
