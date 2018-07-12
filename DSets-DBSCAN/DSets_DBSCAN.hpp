@@ -17,5 +17,5 @@
 
 using namespace arma;
 
-mat DSets_DBSCAN(mat dist_mat, vec x0, double supportThreshold, double precision, int maxIters, int minPts);
+mat DSets_DBSCAN(mat dist_mat, double supportThreshold = 1e-4, double precision = 1e-8, int maxIters = 1000, int minPts = 4, int nbins = 50);
 #endif /* DSets_DBSCAN_hpp */

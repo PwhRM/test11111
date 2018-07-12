@@ -32,7 +32,7 @@ using namespace arma;
 
 vec ExpandCluster(mat dist_mat, uword pt, int cid, double Eps, int minPts, vec clust, vec d);
 
-mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold = 1e-4, double precision = 1e-8, int maxIters = 1000, int minPts = 4){
+mat DSets_DBSCAN(mat dist_mat, double supportThreshold, double precision, int maxIters, int minPts, int nbins){
     //control of input arguments be done in main function
     //generate similarity matrix
     double sigma = 10 * mean(mean(dist_mat));
@@ -40,29 +40,32 @@ mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold = 1e-4, double pr
     //dignal should be zeros
     A.diag() = A.diag() - A.diag();
     //perform histogram equalization on similarity matrix
-    int nbins = 50;
     A = hist_eq(A, nbins);
     //number of points in the data set
     int n_points = int(A.n_rows);
-    //index of points
+    //index of points in the orignal data set
     //d will be changing over the while loop
+    //0 value will be occupied as visited points so the index starts from 1 instead
     vec d(A.n_rows);
     for (int i = 0; i < n_points; i++) {
         d(i) = i + 1;
     }
     //initial cluster id
-    int cid = 1;
+    int cid = 0;
     //cluster results
-    vec clust = zeros(n_points);
+    vec clust = zeros(n_points) - 1;
     //starting clustering
     //the visited data points will be assigned with 0 in the d vec after the while loop
     //first initialize count as n_points
     int count = n_points;
     while (any(d) && count > 0) {
+        cid++;
         //frist remove visited data points
         vec d_tmp = d(find(d > 0));
         int n_points_tmp = int(d_tmp.n_elem);
-        mat A_tmp(n_points_tmp, n_points_tmp), dist_mat_tmp(n_points_tmp, n_points_tmp);
+        count = n_points_tmp;
+        mat A_tmp(n_points_tmp, n_points_tmp),
+        dist_mat_tmp(n_points_tmp, n_points_tmp);
         for (int i = 0; i < n_points_tmp; i++) {
             for (int j = 0; j < n_points_tmp; j++) {
                 A_tmp(i, j) = A(d_tmp(i) - 1, d_tmp(j) - 1);
@@ -72,29 +75,30 @@ mat DSets_DBSCAN(mat dist_mat, mat x0, double supportThreshold = 1e-4, double pr
         //get current x from current d
         //the size of d is changing, so size of x is changing too
         mat x(d_tmp.n_elem, 1);
-        for (int i = 0; i < int(d_tmp.n_rows); i++) {
-            x(i, 0) = x0(d_tmp(i), 0);
-        }
-        x = x / sum(x, 0);
+        x = ones(d_tmp.n_elem, 1);
+        x = x / arma::sum(arma::sum(x));
         //extract dominant from DSets method
         x = inImDynM(A_tmp, x, precision, maxIters);
         //note id_A will be vec instead of matrix
-        uvec xid = find(x > supportThreshold);
-        vec id_A = x.elem(xid);
+        //x_good_ind: index of good x in vector x
+        uvec x_good_ind = find(x > supportThreshold);
+        uvec id_A = x_good_ind;
         //assign clust id
-        vec id_clust = d_tmp.elem(xid);
+        //id_clust - 1 is the actual index in clust
+        vec id_clust = d_tmp.elem(x_good_ind);
         for (int i = 0; i < int(id_clust.n_elem); i++) {
             clust(id_clust(i) - 1) = cid;
         }
         //use DBSCAN to expand dominant
         double Eps = 0;
         for (int i = 0; i < int(id_A.n_elem); i++) {
-            vec d_tmp = dist_mat_tmp.col(id_A(i));
-            d_tmp = sort(d_tmp);
-            Eps = max(Eps, d_tmp(min(minPts + 1, int(d_tmp.n_elem))));
+            //dist_tmp should be the distance map in dist_mat, not dist_mat_tmp
+            vec dist_tmp = dist_mat_tmp.col(id_A(i));
+            dist_tmp = arma::sort(dist_tmp);
+            Eps = max(Eps, dist_tmp(std::min(minPts, int(dist_tmp.n_elem)) - 1));
         }
-        uvec visit_list = xid;
-        for (int i = 0; i < int(xid.n_elem); i++) {
+        uvec visit_list = x_good_ind;
+        for (int i = 0; i < int(x_good_ind.n_elem); i++) {
             uword pt = visit_list(i);
             clust = ExpandCluster(dist_mat_tmp, pt, cid, Eps, minPts, clust, d_tmp);
         }

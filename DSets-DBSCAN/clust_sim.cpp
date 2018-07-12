@@ -34,14 +34,19 @@ mat sim_spherical_clust(int n_point, double r);
 
 mat clust_sim(int n_clust, int n_point, int n_noise, double r, double height, double width){
     //declare output
-    mat clust_data(n_point * n_clust + n_noise, 2);
+    mat clust_data(n_point * n_clust + n_noise, 3);
     //generate clusters
     for (int i = 0; i < n_clust; i++){
-		clust_data(span(i * n_point, (i + 1) * n_point), span(0, 1)) 
+		clust_data(span(i * n_point, (i + 1) * n_point - 1), span(0, 1))
 			= sim_spherical_clust(n_point, r);
-		clust_data(span(i * n_point, (i + 1) * n_point), span(2, 2))
-			= i;
+        clust_data(span(i * n_point, (i + 1) * n_point - 1), span(0, 0)) =
+        clust_data(span(i * n_point, (i + 1) * n_point - 1), span(0, 0)) + height * randu();
+        clust_data(span(i * n_point, (i + 1) * n_point - 1), span(1, 1)) =
+        clust_data(span(i * n_point, (i + 1) * n_point - 1), span(1, 1)) + width * randu();
+		clust_data(span(i * n_point, (i + 1) * n_point - 1), span(2, 2))
+			= (i + 1) * ones(n_point, 1);
     }
+    //add noise
 	for (int i = n_point * n_clust; i < n_point * n_clust + n_noise; i++) {
 		clust_data(i, 0) = height * randu();
 		clust_data(i, 1) = width * randu();

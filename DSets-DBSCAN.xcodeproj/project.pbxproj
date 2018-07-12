@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B50021C020EA6434001784C2 /* inImDynM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B50021BE20EA6434001784C2 /* inImDynM.cpp */; };
 		B536F45B20E651DF00FC0185 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F45A20E651DF00FC0185 /* main.cpp */; };
-		B536F46320E6545500FC0185 /* DSets_DBSCAN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F46120E6545500FC0185 /* DSets_DBSCAN.cpp */; };
 		B536F46620E6569300FC0185 /* clust_sim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F46420E6569300FC0185 /* clust_sim.cpp */; };
-		B536F46920E6C9AC00FC0185 /* hist_eq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B536F46720E6C9AC00FC0185 /* hist_eq.cpp */; };
-		B56DB91720EE3B8500A74873 /* ExpandCluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B56DB91520EE3B8500A74873 /* ExpandCluster.cpp */; };
+		B56DB91A20EF9F9700A74873 /* hist_eq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B56DB91920EF9F9700A74873 /* hist_eq.cpp */; };
+		B56DB91D20EFA12100A74873 /* dist_mat_maker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B56DB91B20EFA12100A74873 /* dist_mat_maker.cpp */; };
+		B56DB92B20F4F71900A74873 /* inImDynM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B56DB92A20F4F71900A74873 /* inImDynM.cpp */; };
+		B5E5507620F6493D006C42BA /* ExpandCluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5E5507420F6493D006C42BA /* ExpandCluster.cpp */; };
+		B5E5507920F7C426006C42BA /* DSets_DBSCAN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5E5507820F7C426006C42BA /* DSets_DBSCAN.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,18 +29,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B50021BE20EA6434001784C2 /* inImDynM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = inImDynM.cpp; sourceTree = "<group>"; };
-		B50021BF20EA6434001784C2 /* inImDynM.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = inImDynM.hpp; sourceTree = "<group>"; };
 		B536F45720E651DF00FC0185 /* DSets-DBSCAN */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "DSets-DBSCAN"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B536F45A20E651DF00FC0185 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		B536F46120E6545500FC0185 /* DSets_DBSCAN.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DSets_DBSCAN.cpp; sourceTree = "<group>"; };
-		B536F46220E6545500FC0185 /* DSets_DBSCAN.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DSets_DBSCAN.hpp; sourceTree = "<group>"; };
 		B536F46420E6569300FC0185 /* clust_sim.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = clust_sim.cpp; sourceTree = "<group>"; };
 		B536F46520E6569300FC0185 /* clust_sim.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = clust_sim.hpp; sourceTree = "<group>"; };
-		B536F46720E6C9AC00FC0185 /* hist_eq.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hist_eq.cpp; sourceTree = "<group>"; };
-		B536F46820E6C9AC00FC0185 /* hist_eq.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hist_eq.hpp; sourceTree = "<group>"; };
-		B56DB91520EE3B8500A74873 /* ExpandCluster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ExpandCluster.cpp; sourceTree = "<group>"; };
-		B56DB91620EE3B8500A74873 /* ExpandCluster.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ExpandCluster.hpp; sourceTree = "<group>"; };
+		B56DB91820EF9F9700A74873 /* hist_eq.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hist_eq.hpp; sourceTree = "<group>"; };
+		B56DB91920EF9F9700A74873 /* hist_eq.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hist_eq.cpp; sourceTree = "<group>"; };
+		B56DB91B20EFA12100A74873 /* dist_mat_maker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dist_mat_maker.cpp; sourceTree = "<group>"; };
+		B56DB91C20EFA12100A74873 /* dist_mat_maker.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = dist_mat_maker.hpp; sourceTree = "<group>"; };
+		B56DB92820F4EF7200A74873 /* inImDynM.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = inImDynM.hpp; sourceTree = "<group>"; };
+		B56DB92A20F4F71900A74873 /* inImDynM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = inImDynM.cpp; sourceTree = "<group>"; };
+		B5E5507420F6493D006C42BA /* ExpandCluster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExpandCluster.cpp; sourceTree = "<group>"; };
+		B5E5507520F6493D006C42BA /* ExpandCluster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExpandCluster.hpp; sourceTree = "<group>"; };
+		B5E5507720F7C426006C42BA /* DSets_DBSCAN.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DSets_DBSCAN.hpp; sourceTree = "<group>"; };
+		B5E5507820F7C426006C42BA /* DSets_DBSCAN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DSets_DBSCAN.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,17 +75,19 @@
 		B536F45920E651DF00FC0185 /* DSets-DBSCAN */ = {
 			isa = PBXGroup;
 			children = (
+				B5E5507820F7C426006C42BA /* DSets_DBSCAN.cpp */,
+				B5E5507720F7C426006C42BA /* DSets_DBSCAN.hpp */,
+				B5E5507420F6493D006C42BA /* ExpandCluster.cpp */,
+				B5E5507520F6493D006C42BA /* ExpandCluster.hpp */,
+				B56DB92A20F4F71900A74873 /* inImDynM.cpp */,
+				B56DB92820F4EF7200A74873 /* inImDynM.hpp */,
+				B56DB91920EF9F9700A74873 /* hist_eq.cpp */,
+				B56DB91820EF9F9700A74873 /* hist_eq.hpp */,
 				B536F45A20E651DF00FC0185 /* main.cpp */,
-				B536F46120E6545500FC0185 /* DSets_DBSCAN.cpp */,
-				B536F46220E6545500FC0185 /* DSets_DBSCAN.hpp */,
 				B536F46420E6569300FC0185 /* clust_sim.cpp */,
 				B536F46520E6569300FC0185 /* clust_sim.hpp */,
-				B536F46720E6C9AC00FC0185 /* hist_eq.cpp */,
-				B536F46820E6C9AC00FC0185 /* hist_eq.hpp */,
-				B50021BE20EA6434001784C2 /* inImDynM.cpp */,
-				B50021BF20EA6434001784C2 /* inImDynM.hpp */,
-				B56DB91520EE3B8500A74873 /* ExpandCluster.cpp */,
-				B56DB91620EE3B8500A74873 /* ExpandCluster.hpp */,
+				B56DB91B20EFA12100A74873 /* dist_mat_maker.cpp */,
+				B56DB91C20EFA12100A74873 /* dist_mat_maker.hpp */,
 			);
 			path = "DSets-DBSCAN";
 			sourceTree = "<group>";
@@ -143,12 +148,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50021C020EA6434001784C2 /* inImDynM.cpp in Sources */,
+				B56DB92B20F4F71900A74873 /* inImDynM.cpp in Sources */,
 				B536F46620E6569300FC0185 /* clust_sim.cpp in Sources */,
-				B536F46920E6C9AC00FC0185 /* hist_eq.cpp in Sources */,
-				B536F46320E6545500FC0185 /* DSets_DBSCAN.cpp in Sources */,
-				B56DB91720EE3B8500A74873 /* ExpandCluster.cpp in Sources */,
+				B56DB91A20EF9F9700A74873 /* hist_eq.cpp in Sources */,
+				B5E5507920F7C426006C42BA /* DSets_DBSCAN.cpp in Sources */,
 				B536F45B20E651DF00FC0185 /* main.cpp in Sources */,
+				B5E5507620F6493D006C42BA /* ExpandCluster.cpp in Sources */,
+				B56DB91D20EFA12100A74873 /* dist_mat_maker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,9 +274,35 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = /usr/local/Cellar/armadillo/8.600.0/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/armadillo/8.600.0/lib;
-				OTHER_LDFLAGS = "-larmadillo";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/armadillo/8.600.0/include,
+					/usr/local/include,
+					/usr/local/include/opencv,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/armadillo/8.600.0/lib,
+					/usr/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-larmadillo",
+					"-lopencv_dnn",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_videostab",
+					"-lopencv_calib3d",
+					"-lopencv_features2d",
+					"-lopencv_highgui",
+					"-lopencv_videoio",
+					"-lopencv_imgcodecs",
+					"-lopencv_video",
+					"-lopencv_photo",
+					"-lopencv_imgproc",
+					"-lopencv_flann",
+					"-lopencv_core",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -279,9 +311,35 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = /usr/local/Cellar/armadillo/8.600.0/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/armadillo/8.600.0/lib;
-				OTHER_LDFLAGS = "-larmadillo";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/armadillo/8.600.0/include,
+					/usr/local/include,
+					/usr/local/include/opencv,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/armadillo/8.600.0/lib,
+					/usr/local/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-larmadillo",
+					"-lopencv_dnn",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_videostab",
+					"-lopencv_calib3d",
+					"-lopencv_features2d",
+					"-lopencv_highgui",
+					"-lopencv_videoio",
+					"-lopencv_imgcodecs",
+					"-lopencv_video",
+					"-lopencv_photo",
+					"-lopencv_imgproc",
+					"-lopencv_flann",
+					"-lopencv_core",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
